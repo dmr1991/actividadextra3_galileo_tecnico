@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actividad 2 - 24000205</title>
+  </head>
+  <body>
+    <script>
+      let dia = parseInt(prompt("Ingrese el día de su nacimiento. (Ej: 20)"));
+      let mes = parseInt(
+        prompt(
+          "Ingrese el mes de su nacimiento en formato de número. (Ej: Septiembre sería 9)"
+        )
+      );
+
+      function calcularsigno(d, m) {
+        let signozodiaco = "";
+        if (mes == 1) {
+          if (dia <= 20) {
+            signozodiaco = "Capricornio";
+          } else {
+            signozodiaco = "Acuario";
+          }
+        } else if (mes == 2) {
+          if (dia <= 19) {
+            signozodiaco = "Acuario";
+          } else {
+            signozodiaco = "Piscis";
+          }
+        } else if (mes == 3) {
+          if (dia <= 20) {
+            signozodiaco = "Piscis";
+          } else {
+            signozodiaco = "Aries";
+          }
+        } else if (mes == 4) {
+          if (dia <= 20) {
+            signozodiaco = "Aries";
+          } else {
+            signozodiaco = "Tauro";
+          }
+        } else if (mes == 5) {
+          if (dia <= 20) {
+            signozodiaco = "Tauro";
+          } else {
+            signozodiaco = "Géminis";
+          }
+        } else if (mes == 6) {
+          if (dia <= 20) {
+            signozodiaco = "Géminis";
+          } else {
+            signozodiaco = "Cáncer";
+          }
+        } else if (mes == 7) {
+          if (dia <= 22) {
+            signozodiaco = "Cáncer";
+          } else {
+            signozodiaco = "Leo";
+          }
+        } else if (mes == 8) {
+          if (dia <= 23) {
+            signozodiaco = "Leo";
+          } else {
+            signozodiaco = "Virgo";
+          }
+        } else if (mes == 9) {
+          if (dia <= 22) {
+            signozodiaco = "Virgo";
+          } else {
+            signozodiaco = "Libra";
+          }
+        } else if (mes == 10) {
+          if (dia <= 23) {
+            signozodiaco = "Libra";
+          } else {
+            signozodiaco = "Escorpio";
+          }
+        } else if (mes == 11) {
+          if (dia <= 22) {
+            signozodiaco = "Escorpio";
+          } else {
+            signozodiaco = "Sagitario";
+          }
+        } else if (mes == 12) {
+          if (dia <= 21) {
+            signozodiaco = "Sagitario";
+          } else {
+            signozodiaco = "Capricornio";
+          }
+        }
+        return signozodiaco;
+      }
+
+      let signo = calcularsigno(dia, mes);
+      alert("Su signo zodiacal es: " + signo);
+
+    </script>
+  </body>
+</html>

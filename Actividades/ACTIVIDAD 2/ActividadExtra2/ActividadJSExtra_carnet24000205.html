@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Actividad EXTRA 2 - 24000205</title>
+  </head>
+  <body>
+    <script>
+      alert(
+        "A continuación se presenta un juego similar al Blackjack. El jugador jugará contra la computadora. Ambos sacarán 2 cartas iniciales. El jugador conocerá únicamente sus cartas y podrá decidir si sacar cartas adicionales con la finalidad de acercarse lo más posible al 21 sin pasarse, y al mismo tiempo acercarse más que la computadora. El jugador podrá sacar la cantidad de cartas que quiera, siempre y cuando no se pase de 21. Al pasarse de 21, el jugador habrá perdido. ¡Empezemos el juego! ¡Mucha suerte!"
+      );
+      // funcion para generar numero al sacar nueva carta:
+      function sacarCarta(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      //blackjack establecer rango de cartas a jugar:
+      let minimo = 1;
+      let maximo = 11;
+      // la casa saca 2 cartas sin mostrarlas:
+      let cartaCasa1 = sacarCarta(minimo, maximo);
+      let cartaCasa2 = sacarCarta(minimo, maximo);
+      // suma de las 2 cartas de la casa
+      let sumaCasa = cartaCasa1 + cartaCasa2;
+      // el jugador saca 2 cartas y las ve:
+      let cartaJugador1 = sacarCarta(minimo, maximo);
+      let cartaJugador2 = sacarCarta(minimo, maximo);
+      let sumaJugador = cartaJugador1 + cartaJugador2;
+      alert(
+        "Las dos cartas que usted ha sacado son: " +
+          cartaJugador1 +
+          " y " +
+          cartaJugador2 +
+          ". Estas cartas suman " +
+          sumaJugador +
+          "."
+      );
+      // suma de las 2 cartas del jugador
+
+      //se le presenta al jugador la opción de sacar una tercera carta:
+      function obtenerDecisionJugador() {
+        let decisionJugador;
+        let validInput;
+
+        do {
+          decisionJugador = prompt(
+            "¿Desea sacar una carta más? (Responda SI o NO, sin tildes)"
+          ).toLowerCase(); // Convertir la entrada a minúsculas para hacer la comparación insensible a mayúsculas/minúsculas
+
+          if (decisionJugador === "si" || decisionJugador === "no") {
+            validInput = true;
+          } else {
+            alert("Por favor, responda con SI o NO.");
+            validInput = false;
+          }
+        } while (!validInput);
+
+        return decisionJugador === "si";
+      }
+
+      // el booleano que me confirma si el jugador quiere otra carta o no.
+      let jugadorSolicitaCarta = obtenerDecisionJugador();
+      let cartaJugador3 = 0;
+
+      // condicional para sumar una carta si el jugador lo decide.
+      while (jugadorSolicitaCarta && sumaJugador < 21) {
+        cartaJugador3 = sacarCarta(minimo, maximo);
+        sumaJugador += cartaJugador3;
+        alert(
+          "Su nueva carta vale " +
+            cartaJugador3 +
+            ". Su nuevo total es " +
+            sumaJugador
+        );
+        if (sumaJugador < 21) {
+          jugadorSolicitaCarta = obtenerDecisionJugador();
+        } else if (sumaJugador == 21) {
+          break;
+        } else {
+          alert(
+            "Lastima, su total es " +
+              sumaJugador +
+              ". Se pasó de 21. Suerte para la próxima."
+          );
+        }
+      }
+
+      if (sumaJugador < 21 || sumaJugador == 21) {
+        alert(
+          "Las 2 cartas de la casa eran " +
+            cartaCasa1 +
+            " y " +
+            cartaCasa2 +
+            ". La suma total de la casa es " +
+            sumaCasa +
+            "."
+        );
+        alert("Su suma total es " + sumaJugador);
+        if (sumaJugador < sumaCasa) {
+          alert("Lástima, ha perdido.");
+        } else if (sumaJugador == sumaCasa) {
+          alert("Empate.");
+        } else {
+          alert("Enhorabuena, ha ganado.");
+        }
+      }
+    </script>
+  </body>
+</html>
